@@ -1,0 +1,221 @@
+/******************************************************************************
+
+Projeto executado na disciplina de Algoritmos e Lógica de Programação, ministrada
+pelo professor William A. Nogueira, na Fatec de Osasco.
+Alunos: Eder Silva Marques e Naomi Araújo Iha
+
+*******************************************************************************/
+
+#include <stdio.h>
+
+int main()
+{
+       /// Senha //
+    int senha;
+        printf("Digite a senha para iniciar a votação:");
+        scanf("%d", &senha);
+        while(senha!=9999)
+        {
+            printf("\nSenha incorreta.\nPor favor digite novamente:");
+            scanf("%d", &senha);
+        }
+        printf("\n\nOk. \nVotação liberada."); 
+        
+        /// Candidatos ///
+    
+    int voto, conf, cont=0, voto01=0, voto02=0, voto03=0, voto00=0, votonulo=0; 
+        
+        printf("\nBem-vindo a urna eletrônica! Vote para Presidente do Brasil: \n\nDigite 01 para votar em Cássio\nDigite 02 para votar em Roger Guedes\nDigite 03 para votar em Luan\nDigite 00 para votar em branco");
+        printf("\n\nInsira seu voto: ");
+        scanf("%d", &voto);
+        
+        /// Contagem dos votos válidos e nulo ///
+        
+        while (voto>=0){
+            switch(voto){
+                case 01:
+                    voto01=voto01+1;
+                    cont=cont+1;
+                    break;
+                    case 02:
+                        voto02=voto02+1;
+                        cont=cont+1;
+                        break;
+                        case 03:
+                            voto03=voto03+1;
+                            cont=cont+1;
+                            break;
+                            case 00:
+                                voto00=voto00+1;
+                                cont=cont+1;
+                                break;
+                                default:
+                                    votonulo=votonulo+1;
+                                    cont=cont+1;
+                                    
+                }
+        
+        ///Encerrar ou continuar a votação ///
+        
+        printf("\nDeseja continuar ou encerrar a votação? \nDigite 1 para continuar e 2 para encerrar: ");
+        scanf("%d", &conf);
+        if(conf==1) {
+            printf("\nDigite senha novamente para iniciar nova votação: ");
+            scanf("%d", &senha);
+            while(senha!=9999)
+        {    
+            printf("\nSenha incorreta.\nPor favor digite novamente:");
+            scanf("%d", &senha);
+        }
+            printf("\n\nOk. \nVotação liberada."); 
+        
+                printf("\nBem-vindo a urna eletrônica! Vote para Presidente do Brasil: \n\nDigite 01 para votar em Cássio\nDigite 02 para votar em Roger Guedes\nDigite 03 para votar em Luan\nDigite 00 para votar em branco");
+                printf("\n\nInsira seu voto: ");
+                scanf("%d", &voto);
+        }
+        else
+            if(conf==2){
+                printf("\nDigite a senha para encerrar a votação: ");
+            scanf("%d", &senha);
+            while(senha!=9999)
+            {
+            printf("\nSenha incorreta.\nPor favor digite novamente:");
+            scanf("%d", &senha);
+            }
+                printf("\nVotação encerrada.\n\n");
+                break;
+            }
+        }  
+
+ ///Resultados//
+
+//Candidatos em porcentagens//
+
+    float cand01, cand02, cand03, cand00, candnulo;
+    cand01=(voto01*100)/cont;
+    cand02=(voto02*100)/cont;
+    cand03=(voto03*100)/cont;
+    candnulo=(votonulo*100)/cont;
+    cand00=(voto00*100)/cont;
+
+  printf("\n\nResultados em porcentagens: \n");
+
+    if((voto01>voto02)&&(voto01>voto03)){
+        printf("\nCássio venceu a eleição com %.2f%% dos votos\n", cand01);
+    	if (voto02>voto03){
+    		printf("Roger Guedes teve %.2f%% dos votos ficando em segundo lugar\n", cand02);
+    		printf("Luan teve %.2f%% dos votos ficando em terceiro lugar\n", cand03);
+    	}
+    	else
+    		 if(voto03>voto02){
+        		printf("Luan teve %.2f%% ficando em segundo lugar\n", cand03);
+        		printf("Roger Guedes teve %.2f%% ficandoem terceiro lugar\n", cand02);
+    		    }
+    		else
+    			 if(voto03==voto02){
+    			      printf("Empate entre os outros dois candidatos com %.2f%% cada.\n", cand03);
+    			    }
+           }
+           
+    if((voto02>voto01)&&(voto02>voto03)){
+            printf("\nRoger Guedes venceu a eleição com %.2f%% dos votos\n", cand02);
+    	if (voto01>voto03){
+    		printf("Cássio teve %.2f%% ficando em segundo lugar\n", cand01);
+    		printf("Luan teve %.2f%% ficando em terceiro lugar\n", cand03);
+    		}
+    	else
+    		 if(voto03>voto01){
+    		    printf("Luan teve %.2f%% ficando em segundo lugar\n", cand03);
+    			printf("Cássio teve %.2f%% ficando em terceiro lugar\n", cand01);
+    		    }
+    		    if(voto03==voto01){
+    			        printf("Empate entre os outros dois candidatos com %.2f%% cada.\n", cand01);
+    			    }
+           }
+           
+    if((voto03>voto01)&&(voto03>voto02)){
+            printf("\nLuan venceu a eleição com %.2f%% dos votos\n", cand03);
+    	if (voto01>voto02){
+    		printf("Cássio teve %.2f%% ficando em segundo lugar\n", cand01);
+    		printf("Roger Guedes teve %.2f%% ficando em terceiro lugar\n", cand02);
+    		}
+    		if(voto02>voto01){
+    		    printf("Roger Guedes teve %.2f%% ficando em segundo lugar\n", cand02);
+    			printf("Cássio teve %.2f%% ficando em terceiro lugar\n", cand01);
+    		}
+    		    if(voto01==voto02){
+    			        printf("Empate entre os outros dois candidatos com %.2f%% cada.\n", cand02);
+    			    }
+        }        
+        
+            printf("\nDemais votos: ");
+            printf("\nVotos Brancos - %.2f%%\n", cand00);
+            printf("\nVotos Nulos - %.2f%%", candnulo);
+                
+        
+
+ /// Candidatos em números absolutos ///
+    
+    printf("\n\n\nResultados Finais em números absolutos:\n\n");
+    
+    if((voto01>voto02)&&(voto01>voto03)){
+        printf("\nCássio recebeu %d voto(s)\n", voto01);
+		if (voto02>voto03){
+			printf("Roger Guedes recebeu %d voto(s)\n", voto02);
+			printf("Luan recebeu %d voto(s)\n", voto03);
+		}
+		else
+		    if(voto03>voto02){
+    			printf("Luan recebeu %d voto(s)\n", voto03);
+    			printf("Roger Guedes recebeu %d voto(s)\n", voto02);
+		    }
+       }
+    if((voto02>voto01)&&(voto02>voto03)){
+        printf("\nRoger Guedes recebeu %d voto(s)\n", voto02);
+		if (voto01>voto03){
+			printf("Cássio recebeu %d voto(s)\n", voto01);
+			printf("Luan recebeu %d voto(s)\n", voto03);
+		}
+		else
+		    if(voto03>voto01){
+    			printf("Luan recebeu %d voto(s)\n", voto03);
+    			printf("Cássio recebeu %d voto(s)\n", voto01);
+		    }
+       }
+    if((voto03>voto02)&&(voto03>voto01)){
+        printf("\nLuan recebeu %d voto(s)\n", voto03);
+		if (voto02>voto02){
+			printf("Roger Guedes recebeu %d voto(s)\n", voto02);
+			printf("Cássio recebeu %d voto(s)\n", voto01);
+		}
+		else
+		    if(voto01>voto02){
+    			printf("Cássio recebeu %d voto(s)\n", voto01);
+    			printf("Roger Guedes recebeu %d voto(s)\n", voto02);
+		    }
+       }
+       if(voto01==voto02){
+		            printf("Cássio recebeu %d voto(s)\n", voto01);
+		            printf("Roger Guedes recebeu %d voto(s)\n", voto02);
+		        }
+	            else
+	                if(voto01==voto03){
+	                    printf("Cássio recebeu %d voto(s)\n", voto01);
+	                    printf("Luan recebeu %d voto(s)\n", voto03);
+	                }
+	                else
+	                    if(voto02==voto03){
+	                        printf("Roger Guedes recebeu %d voto(s)\n", voto02);
+	                        printf("Luan recebeu %d voto(s)\n", voto03);
+	                    }
+
+        printf("\nDemais votos: ");
+        printf("\nVotos Brancos - %d", voto00);
+        printf("\nVotos Nulos - %d", votonulo);
+}
+
+
+ 
+
+
+
